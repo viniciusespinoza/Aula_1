@@ -3,11 +3,29 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Node App 1</title>
 </head>
 
 <body>
     <h1>App legal</h1>
+
+    <script type="text/javascript">
+        function lista = $.ajax({
+                url: "http://localhost:8080/api/usuarios",
+                method: "GET"
+            })
+
+            .done(function(resposta) {
+                var memeTemplate = "<tr><td>#memeName#</td><td> <img id='memeImg'" +
+                    "src='#memeUrl#' width='100px'/> </td></tr>";
+                console.log(resposta.data.memes[10].url);
+                for (var i in resposta.data.memes) {
+                    var retorno = memeTemplate.replace("#memeName#", resposta.data.memes[i].name).
+                    replace("#memeUrl#", resposta.data.memes[i].url);
+                    $('#tabelas').append(retorno);
+                }
+            })
+    </script>
 </body>
 
 </html>

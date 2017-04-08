@@ -14,18 +14,3 @@ app.use('/api', routes);
 
 app.listen(port,host);
 console.log("Aplicação iniciada. Escutando na porta "+ port);
-
-
-// Database
-var MongoClient = require('mongodb').MongoClient
-var assert = require('assert');
-
-//Connection URL
-var url = 'mongodb://localhost:27017/test';
-
-//Metodo de conexão
-MongoClient.connect(url, function(err, db) {
-  assert.equal(null, err);
-  console.log('Conectado com sucesso');
-  db.close();
-});
